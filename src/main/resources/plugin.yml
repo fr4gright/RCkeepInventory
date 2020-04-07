@@ -1,0 +1,7 @@
+name: RCkeepInventory
+version: @version@
+main: me.rvt.rckeepinventory.RCkeepInventory
+api-version: 1.13
+authors: [RvT]
+description: Allows players to keep their inventory on death
+website: rebrovocraft.info

@@ -29,7 +29,9 @@ public final class RCkeepInventory extends JavaPlugin implements Listener {
                 e.getEntity().getWorld().getName()))
         {
             if(config.getBoolean("settings.hotbar.keep")){
-                deathPlayers.add(new Hotbar(e));
+                Hotbar newDeath = new Hotbar(e);
+                newDeath.start();
+                deathPlayers.add(newDeath);
             }
         }
     }

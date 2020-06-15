@@ -5,12 +5,16 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
-public class Hotbar {
-    private Player p;
+public class Hotbar extends Thread{
+    private PlayerDeathEvent e;
     ItemStack[] hotbarItems = new ItemStack[9];
 
     public Hotbar(PlayerDeathEvent e){
-        p = e.getEntity();
+        this.e = e;
+    }
+
+    public void run(){
+        Player p = e.getEntity().getPlayer();
 
         for(int i = 0; i<9; i++){
             ItemStack currentItem = new ItemStack(Material.AIR, 1);
@@ -26,11 +30,11 @@ public class Hotbar {
     }
 
     public String getPlayerName(){
-        return p.getName();
+        return e.getEntity().getPlayer().getName();
     }
 
     public void giveItemsBack(){
         for(int i = 0; i<9; i++)
-            p.getInventory().setItem(i, hotbarItems[i]);
+            e.getEntity().getPlayer().getInventory().setItem(i, hotbarItems[i]);
     }
 }
